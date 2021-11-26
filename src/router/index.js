@@ -8,7 +8,30 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children:[
+      // component
+      {
+        path: '/button-demo',
+        component: () => import( '../views/component/button-demo.vue')
+      },
+      {
+        path: '/bubble-demo',
+        component: () => import( '../views/component/bubble-demo.vue')
+      },
+      // navigator
+      {
+        path: '/anchor-demo',
+        component: () => import( '../views/navigator/anchor-demo.vue')
+      },
+      // form
+      // datashow
+      {
+        path: '/card-demo',
+        component: () => import( '../views/dataShow/card-demo.vue')
+      },
+      // feedback
+    ]
   },
   {
     path: '/about',

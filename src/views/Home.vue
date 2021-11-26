@@ -12,7 +12,10 @@
 					<div class="nav-item nav-level-1">
 						<i :class="l1.icon" class="nav-item-icon"></i>
 						<span class="nav-item-text">{{ l1.key }}</span>
-						<span v-if="l1.sub_navs && l1.sub_navs.length" class="nav-item-collapse-btn" @click="l1.iscollapse = !l1.iscollapse"
+						<span v-if="l1.sub_navs && l1.sub_navs.length" 
+							class="nav-item-collapse-btn" 
+							:class="{'is-collapse': l1.iscollapse}"
+							@click="l1.iscollapse = !l1.iscollapse"
 							style="font-size: 18px;font-style: normal;font-weight: normal;">&#708;</span>
 					</div>
 					<div v-if="l1.sub_navs && l1.sub_navs.length" v-show="l1.iscollapse" class="nav-level-2-list">
@@ -20,7 +23,10 @@
 							<div class="nav-item nav-level-2">
 								<i :class="l2.icon" class="nav-item-icon"></i>
 								<span>{{ l2.key }}</span>
-								<span v-if="l2.sub_navs && l2.sub_navs.length" class="nav-item-collapse-btn" @click="l2.iscollapse = !l2.iscollapse"
+								<span v-if="l2.sub_navs && l2.sub_navs.length" 
+									class="nav-item-collapse-btn"
+									:class="{'is-collapse': l2.iscollapse}" 
+									@click="l2.iscollapse = !l2.iscollapse"
 									style="font-size: 18px;font-style: normal;font-weight: normal; ">&#708;</span>
 							</div>
 							<div v-if="l2.sub_navs && l2.sub_navs.length" v-show="l2.iscollapse" class="nav-level-3-list">
@@ -60,12 +66,29 @@
 				slide_navs: [
 					// 按钮
 					{
-						key: "按钮",
+						key: "组件",
 						link: "/",
 						iscollapse: false,
 						isToolTip: false,
 						icon: "fa fa-map-o",
-						sub_navs: [],
+						sub_navs: [
+						    {
+								key: "按钮",
+								link: "button-demo",
+								iscollapse: false,
+								icon: "fa fa-external-link-square",
+								sub_navs: [
+								],
+							},
+							{
+								key: "气泡",
+								link: "bubble-demo",
+								iscollapse: false,
+								icon: "fa fa-external-link-square",
+								sub_navs: [
+								],
+							},
+						],
 					},
 					// 导航分类
 					{
@@ -109,7 +132,7 @@
 							},
 							{
 								key: "锚定位",
-								link: "/",
+								link: "anchor-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -153,7 +176,7 @@
 						sub_navs: [
 							{
 								key: "轮播",
-								link: "/",
+								link: "swiper-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -161,7 +184,7 @@
 							},
 							{
 								key: "树",
-								link: "/",
+								link: "tree-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -169,7 +192,7 @@
 							},
 							{
 								key: "标签",
-								link: "/",
+								link: "mark-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -177,7 +200,7 @@
 							},
 							{
 								key: "文字提示",
-								link: "/",
+								link: "tooltip-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -185,7 +208,7 @@
 							},
 							{
 								key: "气泡卡片",
-								link: "/",
+								link: "bubble-card-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -193,7 +216,7 @@
 							},
 							{
 								key: "表格",
-								link: "/",
+								link: "table-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -201,7 +224,7 @@
 							},
 							{
 								key: "块引用",
-								link: "/",
+								link: "block-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -209,7 +232,7 @@
 							},
 							{
 								key: "分割线",
-								link: "/",
+								link: "separator-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -217,7 +240,7 @@
 							},
 							{
 								key: "列表",
-								link: "/",
+								link: "list-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -225,7 +248,7 @@
 							},
 							{
 								key: "折叠面板",
-								link: "/",
+								link: "accordion-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -233,7 +256,7 @@
 							},
 							{
 								key: "卡片",
-								link: "/",
+								link: "card-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -454,6 +477,7 @@
 		color: rgb(176,176,176);
 		display: flex;
 		flex-direction: column;
+		/* position: fixed; */
 	}
 
 	.home--contain-slider i,.nav-item-collapse-btn{
@@ -519,7 +543,7 @@
 		bottom: 0;
 		height: 20px;
 		font-size: 20px !important;
-		width: calc(200px - 20px - 20px);
+		width: calc(230px - 20px - 20px);
 		background-color: rgb(36,37,38);
 		padding: 10px 20px;
 	}
@@ -527,17 +551,27 @@
 	.home .home--contain-main {
 		flex: 1;
 		height: 100%;
+		max-height: 100%;
 		background-color: #eee;
+		/* margin-left: 230px; */
+		
 	}
 
 	.home--contain-main .main-header{
+		width: 100%;
 		height: 60px;
 		background: rgba(48,49,54);
+		position: fixed;
+		top: 0;
 	}
 
 	.home--contain-main .main-contain{
-		height: calc(100% - 60px);
+		height: calc(100% - 60px - 30px);
 		background: rgba(34,34,35);
+		padding: 15px;
+		margin-top: 60px;
+		overflow-y: auto;
+		color: #fff;
 	}
 
 	.slider-nav {
@@ -579,6 +613,19 @@
 	.nav-item-collapse-btn {
 		position: absolute;
 		right: 10px;
+	}
+
+	.nav-item-collapse-btn.is-collapse{
+		animation: collapse .5s ease forwards;
+	}
+
+	@keyframes collapse {
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(180deg);
+		}
 	}
 
 	

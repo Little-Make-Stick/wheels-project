@@ -1,7 +1,13 @@
 <template>
     <div class='card-component'>
         <div class="card-title">
-            {{cardTitle}}
+            <div class="title-icon">
+                <i :class="titleIcon"></i>
+            </div>
+            <div class="title-content">{{cardTitle}}</div>
+            <div class="more-icon">
+                <i class="fa fa-ellipsis-h" v-if="more"></i>
+            </div>
         </div>
         <div class="card-content">
             <!-- <slot name="cardcontent" :cat="cat"></slot> -->
@@ -10,29 +16,54 @@
     </div>
 </template>
 <script>
-    export default{
-        prop:{
-            cardTitle:{type:String,default:'Title'}
+    export default {
+        props: {
+            cardTitle: { type: String, default: 'Title' },
+            titleIcon: { type: String },
+            more: { type: Boolean, default: false }
         },
-        data(){
-            return{}
+        data() {
+            return {}
         },
-        watch:{},
-        computed:{},
-        created(){},
-        mounted(){},
-        methods:{},
+        watch: {},
+        computed: {},
+        created() { },
+        mounted() { },
+        methods: {},
     }
 </script>
-<style scoped>
-    .card-component{
-        background: rgba(46,47,51);
+<style lang="scss">
+    .card-component {
+        background-color: rgb(46, 47, 51);
         padding: 16px;
-    }
-    .card-component .card-title{
-        line-height: 30px;
-        color: #fff;
-        letter-spacing: 2px;
-        border-bottom: rgba(26,27,28);
+        margin-bottom: 15px;
+        width: calc(100% - 32px);
+
+        .card-title {
+            line-height: 30px;
+            color: #fff;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgb(26, 27, 28);
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            width: 100%;
+            .title-icon{
+                margin-right: 10px
+            }
+            .title-content {
+                white-space: nowrap;
+                overflow: ellipse;
+                flex: 1;
+                text-align: left;
+            }
+            .more-icon{
+                margin-left: 10px
+            }
+        }
+
+        .card-content {
+            padding-top: 10px;
+        }
     }
 </style>
