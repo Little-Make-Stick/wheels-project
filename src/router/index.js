@@ -27,10 +27,34 @@ const routes = [
       // form
       // datashow
       {
+        path: '/badge-demo',
+        component: () => import( '../views/dataShow/badge-demo.vue')
+      },
+      {
+        path: '/label-demo',
+        component: () => import( '../views/dataShow/label-demo.vue')
+      },
+      {
+        path: '/block-demo',
+        component: () => import( '../views/dataShow/block-demo.vue')
+      },
+      {
+        path: '/list-demo',
+        component: () => import( '../views/dataShow/list-demo.vue')
+      },
+      {
         path: '/card-demo',
         component: () => import( '../views/dataShow/card-demo.vue')
       },
+      {
+        path: '/bubble-card-demo',
+        component: () => import( '../views/dataShow/bubble-card-demo.vue')
+      },
       // feedback
+      {
+        path: '/warntip-demo',
+        component: () => import( '../views/feedback/warntip-demo.vue')
+      },
     ]
   },
   {

@@ -35,6 +35,7 @@
         margin: 15px;
         position: relative;
         padding: 5px;
+        
 
         .bubble-content {
             background-color: #fff;
@@ -43,6 +44,7 @@
             display: inline-block;
             color: #000;
             padding: 4px 8px;
+            border-radius: 6px;
         }
 
         .bubble-tail {
@@ -51,7 +53,7 @@
             position: absolute;
 
             &.direction-top {
-                right:6px;
+                right:10px;
                 top: 0;
                 border-top: 0;
                 border-left-color: transparent;
@@ -60,13 +62,13 @@
                     right: calc(50% - 2.5px);
                 }
                 &.align-left{
-                    right: calc(100% - 17px);
+                    right: calc(70% - 2.5px);
                 }
             }
 
             &.direction-right {
                 right: 0;
-                top: 6px;
+                top: 8px;
                 border-right: 0;
                 border-top-color: transparent;
                 border-bottom-color: transparent;
@@ -74,12 +76,12 @@
                     top: calc(50% - 4.5px);
                 }
                 &.align-bottom{
-                    top: calc(100% - 17px);
+                    top: calc(60% - 2.5px);
                 }
             }
 
             &.direction-bottom {
-                right:6px;
+                right: 10px;
                 bottom: 0;
                 border-bottom: 0;
                 border-left-color: transparent;
@@ -88,12 +90,13 @@
                     right: calc(50% - 2.5px);
                 }
                 &.align-left{
-                    right: calc(100% - 17px);
+                    right: calc(70% - 2.5px);
                 }
             }
 
             &.direction-left {
                 left: 0;
+                top: 8px;
                 border-left: 0;
                 border-top-color: transparent;
                 border-bottom-color: transparent;
@@ -101,7 +104,7 @@
                     top: calc(50% - 5px);
                 }
                 &.align-bottom{
-                    top: calc(100% - 17px);
+                    top: calc(60% - 2.5px);
                 }
             }
 

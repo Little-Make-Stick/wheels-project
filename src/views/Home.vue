@@ -192,7 +192,15 @@
 							},
 							{
 								key: "标签",
-								link: "mark-demo",
+								link: "label-demo",
+								iscollapse: false,
+								icon: "fa fa-external-link-square",
+								sub_navs: [
+								],
+							},
+							{
+								key: "徽章",
+								link: "badge-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -330,7 +338,7 @@
 							},
 							{
 								key: "警告反馈",
-								link: "/",
+								link: "/warntip-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [

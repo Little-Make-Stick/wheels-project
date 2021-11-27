@@ -38,10 +38,10 @@
         padding: 16px;
         margin-bottom: 15px;
         width: calc(100% - 32px);
-
+        color: #fff;
         .card-title {
             line-height: 30px;
-            color: #fff;
+            
             letter-spacing: 2px;
             border-bottom: 1px solid rgb(26, 27, 28);
             display: flex;
@@ -53,7 +53,8 @@
             }
             .title-content {
                 white-space: nowrap;
-                overflow: ellipse;
+                text-overflow: ellipse;
+                overflow: hidden;
                 flex: 1;
                 text-align: left;
             }
