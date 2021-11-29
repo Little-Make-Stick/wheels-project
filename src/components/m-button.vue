@@ -3,13 +3,6 @@
         <div ref="mButton" class="m-button" 
             :class="classObj"
             >
-            <!-- :size="size"
-            :status="status"
-            :plain="plain"
-            :circle="circle"
-            :square="square"
-            :round="round"
-            :disabled="disabled" -->
             <i :class="icon"></i>
             <slot></slot>
         </div>
@@ -52,17 +45,20 @@
         watch:{},
         computed:{},
         created(){
-            this.classObj[`plain-${this.plain}`] = this.plain;
-            this.classObj[`status-${this.status}`] = this.status;
-            this.classObj[`size-${this.size}`] = this.size;
+            // this.classObj[`plain-${this.plain}`] = this.plain;
+            this.$set(this.classObj,`plain-${this.plain}`,this.plain);
+            // this.classObj[`status-${this.status}`] = this.status;
+            this.$set(this.classObj,`status-${this.status}`,this.status);
+            // this.classObj[`size-${this.size}`] = this.size;
+            this.$set(this.classObj,`size-${this.size}`,this.size);
         },
         mounted(){
             if(this.circle || this.square){
                 this.$nextTick(()=>{
-                console.log(this.$refs.mButton.clientWidth);
+                // console.log(this.$refs.mButton.clientWidth);
                 this.$refs.mButton.style.height = this.$refs.mButton.clientWidth+'px';
                 this.$refs.mButton.style.width = this.$refs.mButton.clientWidth+'px';
-                console.log(this.$refs.mButton.style,this.$refs.mButton.style.fontSize);
+                // console.log(this.$refs.mButton.style,this.$refs.mButton.style.fontSize);
             })
             }
         },
@@ -94,6 +90,7 @@ $size:(
 @each $key ,$val in $status{
     .plain-full.status-#{$key}{
         background-color: $val;
+        border: 1px solid $val;
         color: #fff;
     }
     .plain-border.status-#{$key}{

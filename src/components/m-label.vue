@@ -36,8 +36,10 @@
         watch:{},
         computed:{},
         created(){
-            this.classObj[`plain-${this.plain}`] = this.plain;
-            this.classObj[`border-${this.border}`] = this.border;
+            // this.classObj[`plain-${this.plain}`] = this.plain;
+            this.$set(this.classObj,`plain-${this.plain}`,this.plain);
+            // this.classObj[`border-${this.border}`] = this.border;
+            this.$set(this.classObj,`border-${this.border}`,this.border);
         },
         mounted(){
             // bgColor,fontColor,borderColor

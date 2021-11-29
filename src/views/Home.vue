@@ -8,7 +8,7 @@
 				<div class="slider-header-title">FREEUI</div>
 			</div>
 			<div class="slider-nav">
-				<router-link tag="div" :to="l1.link"  v-for="(l1, i1) in slide_navs" :key="i1">
+				<div tag="div" :to="l1.link"  v-for="(l1, i1) in slide_navs" :key="i1">
 					<div class="nav-item nav-level-1">
 						<i :class="l1.icon" class="nav-item-icon"></i>
 						<span class="nav-item-text">{{ l1.key }}</span>
@@ -38,7 +38,7 @@
 							</div>
 						</router-link>
 					</div>
-				</router-link>
+				</div>
 			</div>
 			<div class="slider-footer">
 				<div class="collapse-btn">
@@ -290,7 +290,7 @@
 							},
 							{
 								key: "提示",
-								link: "/",
+								link: "toast-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -306,7 +306,7 @@
 							},
 							{
 								key: "对话框",
-								link: "/",
+								link: "dialog-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [

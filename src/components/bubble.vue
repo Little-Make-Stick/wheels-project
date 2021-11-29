@@ -22,8 +22,10 @@
         watch: {},
         computed: {},
         created() {
-            this.classObj[`direction-${this.direction}`] = this.direction;
-            this.classObj[`align-${this.align}`] = this.align;
+            // this.classObj[`direction-${this.direction}`] = this.direction;
+            this.$set(this.classObj,`direction-${this.direction}`,this.direction);
+            // this.classObj[`align-${this.align}`] = this.align;
+            this.$set(this.classObj,`align-${this.align}`,this.align);
         },
         mounted() { },
         methods: {},
@@ -35,7 +37,6 @@
         margin: 15px;
         position: relative;
         padding: 5px;
-        
 
         .bubble-content {
             background-color: #fff;
@@ -62,7 +63,7 @@
                     right: calc(50% - 2.5px);
                 }
                 &.align-left{
-                    right: calc(70% - 2.5px);
+                    right: calc(100% - 18px);
                 }
             }
 
@@ -76,7 +77,7 @@
                     top: calc(50% - 4.5px);
                 }
                 &.align-bottom{
-                    top: calc(60% - 2.5px);
+                    top: calc(100% - 18px);
                 }
             }
 
@@ -90,7 +91,7 @@
                     right: calc(50% - 2.5px);
                 }
                 &.align-left{
-                    right: calc(70% - 2.5px);
+                    right: calc(100% - 18px);
                 }
             }
 
@@ -104,7 +105,7 @@
                     top: calc(50% - 5px);
                 }
                 &.align-bottom{
-                    top: calc(60% - 2.5px);
+                    top: calc(100% - 18px);
                 }
             }
 

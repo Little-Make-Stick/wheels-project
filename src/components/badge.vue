@@ -24,6 +24,7 @@
         computed:{},
         created(){
             this.classObj[`plain-${this.plain}`] = this.plain;
+            this.$set(this.classObj,`plain-${this.plain}`,this.plain);
         },
         mounted(){
             if(Number(this.badge) > 99){

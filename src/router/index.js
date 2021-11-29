@@ -52,6 +52,14 @@ const routes = [
       },
       // feedback
       {
+        path: '/dialog-demo',
+        component: () => import( '../views/feedback/dialog-demo.vue')
+      },
+      {
+        path: '/toast-demo',
+        component: () => import( '../views/feedback/toast-demo.vue')
+      },
+      {
         path: '/warntip-demo',
         component: () => import( '../views/feedback/warntip-demo.vue')
       },

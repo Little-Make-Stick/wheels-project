@@ -2,21 +2,16 @@
     <div class="bubble-card-component">
         <div class="bubble-card-content">
             <bubble :direction="direction" :align="align">
-                <card :cardTitle="cardTitle" :titleIcon="titleIcon" :more="more">
-                    <slot></slot>
-                </card>
+                <m-dialog status="confirm" titleIcon="fa fa-info-circle"></m-dialog>
             </bubble>
         </div>
     </div>
 </template>
 <script>
     import bubble from "./bubble.vue";
-    import card from "./card.vue";
+    import mDialog from "./m-dialog.vue";
     export default {
         props: {
-            cardTitle: { type: String, default: "Title" },
-            titleIcon: { type: String },
-            more: { type: Boolean, default: false },
             // [top, right, bottom, left]
             direction: { type: String, default: "right" },
             // [left, right, top, bottom, center]
@@ -27,7 +22,6 @@
         },
         components: {
             bubble,
-            card,
         },
         watch: {},
         computed: {},
@@ -46,10 +40,13 @@
                 .bubble-content {
                     padding: 0;
 
-                    .card-component {
-                        margin-bottom: 0;
-                        background-color: #3c3d42;
-                        border-radius: 8px;
+                    .m-dialog-component {
+                        .m-dialog-shade{
+                            position: relative;
+                            width: 300px;
+                            display: inline-block;
+                            background-color: transparent;
+                        }
                     }
                 }
 
