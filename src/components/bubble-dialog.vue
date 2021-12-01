@@ -1,8 +1,15 @@
 <template>
-    <div class="bubble-card-component">
-        <div class="bubble-card-content">
+    <div class="bubble-dialog-component">
+        <div class="bubble-dialog-content">
             <bubble :direction="direction" :align="align">
-                <m-dialog status="confirm" titleIcon="fa fa-info-circle"></m-dialog>
+                <m-dialog ref="dialog" status="confirm" 
+                    :titleIcon="titleIcon"
+                    :title="title"
+                    :context="context"
+                    :confirm="confirm"
+                    :cancel="cancel"
+                    >
+                </m-dialog>
             </bubble>
         </div>
     </div>
@@ -16,23 +23,59 @@
             direction: { type: String, default: "right" },
             // [left, right, top, bottom, center]
             align: { type: String, default: "center" },
+            // [confirm, normal, custom]
+            titleIcon: { type: String,default: 'fa fa-info-circle'},
+            title: { type: String, default: 'title' },
+            context: { type: String, default: 'context' },
+            confirm: {
+                type: Object,
+                default: function () {
+                    return {
+                        title: '确认',
+                        handleFunct: (e) => {
+                            alert('确认');
+                            this.closeDialog(e);
+                        }
+                    }
+                }
+            },
+            cancel: {
+                type: Object,
+                default: function () {
+                    return {
+                        title: '取消',
+                        handleFunct: (e) => {
+                            alert('取消');
+                            this.closeDialog(e);
+                        }
+                    }
+                }
+            },
         },
         data() {
             return {};
         },
         components: {
             bubble,
+            mDialog,
         },
         watch: {},
         computed: {},
         created() { },
         mounted() { },
-        methods: {},
+        methods: {
+            closeDialog(e){
+                let dialog = e.target.parentNode.parentNode.parentNode.parentNode;
+                let dialogComp = dialog.parentNode.parentNode.parentNode;
+                let bubbleDialog = dialogComp.parentNode.parentNode.parentNode;
+                bubbleDialog.style.display="none";
+            }
+        },
     };
 </script>
 <style lang="scss">
-    .bubble-card-component {
-        .bubble-card-content {
+    .bubble-dialog-component {
+        .bubble-dialog-content {
             .bubble-component {
                 margin: 0;
                 filter: drop-shadow(0 0 3px #ccc);
@@ -41,6 +84,7 @@
                     padding: 0;
 
                     .m-dialog-component {
+                        
                         .m-dialog-shade{
                             position: relative;
                             width: 300px;

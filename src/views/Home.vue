@@ -282,7 +282,7 @@
 						sub_navs: [
 							{
 								key: "通知",
-								link: "/",
+								link: "notice-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -314,7 +314,7 @@
 							},
 							{
 								key: "底部弹窗",
-								link: "/",
+								link: "actionsheet-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -322,7 +322,7 @@
 							},
 							{
 								key: "气泡确认框",
-								link: "/",
+								link: "bubble-dialog-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [
@@ -330,7 +330,7 @@
 							},
 							{
 								key: "消息提示",
-								link: "/",
+								link: "message-demo",
 								iscollapse: false,
 								icon: "fa fa-external-link-square",
 								sub_navs: [

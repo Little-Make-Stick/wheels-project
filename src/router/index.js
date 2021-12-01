@@ -52,8 +52,24 @@ const routes = [
       },
       // feedback
       {
+        path: '/notice-demo',
+        component: () => import( '../views/feedback/notice-demo.vue')
+      },
+      {
+        path: '/message-demo',
+        component: () => import( '../views/feedback/message-demo.vue')
+      },
+      {
         path: '/dialog-demo',
         component: () => import( '../views/feedback/dialog-demo.vue')
+      },
+      {
+        path: '/bubble-dialog-demo',
+        component: () => import( '../views/feedback/bubble-dialog-demo.vue')
+      },
+      {
+        path: '/actionsheet-demo',
+        component: () => import( '../views/feedback/actionsheet-demo.vue')
       },
       {
         path: '/toast-demo',

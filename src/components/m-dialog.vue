@@ -7,23 +7,27 @@
                         <slot></slot>
                     </div>
                     <div v-else class="m-dialog-info">
-                        <div class="title-icon">
-                            <i :class="titleIcon"></i>
+                        <div class="title-icon" :class="'status-'+status">
+                            <i :class="_titleIcon"></i>
                         </div>
                         <div class="m-dialog-context">
                             <div class="title">{{title}}</div>
                             <div class="context">{{context}}</div>
                         </div>
+                        <div class="close-icon" v-if="isCloseIcon" @click="close.handleFunct">
+                            <i class="fa fa-times"></i>
+                        </div>
                     </div>
 
-                    <div class="confirm-m-dialog-options" v-if="status == 'confirm'">
+                    <div class="confirm-m-dialog-options" v-if="status != 'normal' && status != 'custom' && isConfirmOptions">
                         <m-button class="m-dialog-confirm" status="info" @click.native="confirm.handleFunct">
                             {{confirm.title}}</m-button>
                         <m-button class="m-dialog-cancel" status="primary" @click.native="cancel.handleFunct">
                             {{cancel.title}}</m-button>
                     </div>
-                    <div class="normal-m-dialog-options" v-if="status == 'normal'">
-                        <m-button class="m-dialog-close" status="danger" @click.native="close.handleFunct">{{close.title}}
+                    <div class="normal-m-dialog-options" v-if="status != 'confirm' && status != 'custom'  && isCloseOptions">
+                        <m-button class="m-dialog-close" status="danger" @click.native="close.handleFunct">
+                            {{close.title}}
                         </m-button>
                     </div>
                 </div>
@@ -35,11 +39,14 @@
     import mButton from './m-button.vue'
     export default {
         props: {
-            // [confirm, normal, custom]
+            // [confirm, normal, custom, info, primary, succeed, warn, danger]
             status: { type: String, default: 'normal' },
             titleIcon: { type: String },
             title: { type: String, default: 'title' },
+            isCloseIcon: { type: Boolean, default: false },
             context: { type: String, default: 'context' },
+            isConfirmOptions: { type: Boolean, default: true },
+            isCloseOptions: { type: Boolean, default: true },
             confirm: {
                 type: Object,
                 default: function () {
@@ -84,7 +91,30 @@
             mButton
         },
         watch: {},
-        computed: {},
+        computed: {
+            _titleIcon() {
+                if (this.titleIcon) return this.titleIcon;
+                else {
+                    switch (this.status) {
+                        case 'info':
+                            return 'fa fa-info-circle';
+                            break;
+                        case 'succeed':
+                            return 'fa fa-check-circle';
+                            break;
+                        case 'warn':
+                            return 'fa fa-exclamation-circle';
+                            break;
+                        case 'danger':
+                            return 'fa fa-times-circle';
+                            break;
+                        default:
+                            return 0;
+                            break;
+                    }
+                }
+            }
+        },
         created() { },
         mounted() { },
         methods: {
@@ -96,6 +126,18 @@
     }
 </script>
 <style lang="scss">
+    $color:(
+        'primary': rgb(46, 47, 51),
+        'info': rgb(69, 150, 255),
+        'succeed': rgb(87, 189, 124),
+        'warn': rgb(255, 149, 79),
+        'danger': rgb(229, 93, 93),
+    );
+    @each $key,$val in $color{
+        .title-icon.status-#{$key}{
+            color: $val;
+        }
+    };
     .m-dialog-component {
         .m-dialog-content {
             .m-dialog-shade {
@@ -118,16 +160,19 @@
 
                     .m-dialog-info {
                         display: flex;
+                        justify-content: space-between;
                         font-size: 22px;
                         line-height: 30px;
 
                         .title-icon {
                             margin-right: 10px;
                             font-size: 22px;
-                            color: rgb(255, 149, 79);
+                            
                         }
 
                         .m-dialog-context {
+                            flex: 1;
+                            text-align: left;
                             .title {
                                 font-size: 22px;
                             }

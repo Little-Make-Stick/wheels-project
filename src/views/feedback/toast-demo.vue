@@ -29,11 +29,11 @@
 
         <div ref="toastContain" class="toast-contain">
             <toast ref="toast" :customIcon="toastProps.icon"
-                :status="toastProps.status"
-                :context="toastProps.context"
-                :timeOut="toastProps.timeOut"
-                :shade="toastProps.shade"
-                :position="toastProps.position"
+                :status="toastProps.status || 'info'"
+                :context="toastProps.context || '提示内容'"
+                :timeOut="toastProps.timeOut || 2000"
+                :shade="toastProps.shade || false"
+                :position="toastProps.position || 'center'"
                 
             ></toast>
         </div>
@@ -53,12 +53,12 @@
         data(){
             return{
                 toastProps:{
-                    icon: '',
-                    status: 'info',
-                    context: '提示内容',
-                    timeOut: 2000,
-                    shade: false,
-                    position: 'bottom',
+                    // icon: '',
+                    // status: 'info',
+                    // context: '提示内容',
+                    // timeOut: 2000,
+                    // shade: false,
+                    // position: 'bottom',
                     // open: false
                 },
                 isReload: true,
@@ -92,30 +92,34 @@
                 this.$set(this.toastProps,'position','center');
             },
             toastStatus(status){
-                this.initToast();
+                // this.initToast();
+                this.toastProps = {};
                 this.$set(this.toastProps,'status',status);
                 this.$refs.toast.openToast();
             },
             toastPosition(pos){
-                this.initToast();
+                // this.initToast();
+                this.toastProps = {};
                 this.$set(this.toastProps,'position',pos);
-                this.$set(this.toastProps,'timeOut',2000);
                 this.$refs.toast.openToast();
             },
             toastShade(){
-                this.initToast();
+                // this.initToast();
+                this.toastProps = {};
                 this.$set(this.toastProps,'shade',true);
                 this.$set(this.toastProps,'context','模态阻止点击');
                 this.$refs.toast.openToast();
             },
             toastCustomIcon(){
-                this.initToast();
+                // this.initToast();
+                this.toastProps = {};
                 this.$set(this.toastProps,'icon','fa fa-upload');
                 this.$set(this.toastProps,'context','上传图片');
                 this.$refs.toast.openToast();
             },
             toastContext() {
-                this.initToast();
+                // this.initToast();
+                this.toastProps = {};
                 let context = '提示内容，多行提示内容，多行提示内容，多行提示内容，多行提示内容，多行提示内容，多行提示内容，多行提示内容，，多行提示内容';
                 this.$set(this.toastProps,'context',context);
                 this.$refs.toast.openToast();
