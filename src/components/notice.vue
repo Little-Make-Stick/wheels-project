@@ -96,6 +96,8 @@
 
         .notice-content {
             .notice-group {
+                position: relative;
+                margin: 10px 0;
                 .group-title {
                     display: flex;
                     background-color: #3c3d42;
@@ -103,7 +105,7 @@
                     /* width: calc(100% + 20px); */
                     width: 300px;
                     padding: 8px 10px;
-                    transform: scale(.8);
+                    transform: scale(.9);
 
                     .title-context {
                         flex: 1;
@@ -116,12 +118,12 @@
                 }
 
                 .notice-list {
-                    position: absolute;
+                    position: relative;
                     top: 0px;
                     right: 0px;
 
                     .notice {
-                        transform: scale(.8);
+                        transform: scale(.9);
 
                         .m-dialog-component {
 
@@ -135,7 +137,7 @@
                                 .m-dialog {
                                     padding: 10px;
                                     background-color: #3c3d42;
-                                    margin: -4px 0;
+                                    margin: 4px 0;
                                     border-radius: 4px;
                                 }
                             }
@@ -143,26 +145,32 @@
                     }
 
                     &.isCollapse {
-                        .notice {
+
+                        .notice--module{
                             position: absolute;
-                            top: 40px;
-                            right: 16px;
+                            top: 10px;
+                            // right: 8px;
+                        }
+                        .notice--module:first-child {
+                            position: relative;
+                            top: 10px;
+                            // right: 16px;
                         }
 
                         .notice--module:nth-child(2) {
                             position: absolute;
-                            top: 7px;
+                            top: 17px;
                             opacity: .5;
-                            right: calc(300px * 0.01);
+                            right: calc(300px * 0.01 + 16px);
                             transform: scale(.98);
                         }
 
                         .notice--module:nth-child(3) {
                             position: absolute;
-                            top: 14px;
+                            top: 24px;
                             opacity: .3;
-                            right: calc(300px * 0.02);
-                            transform: scale(.96);
+                            right: calc(300px * 0.02 + 16px);
+                            transform: scale(.94);
                         }
                     }
                 }
