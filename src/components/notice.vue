@@ -11,7 +11,7 @@
                         <i class="fa fa-angle-down"></i>
                     </div>
                 </div>
-                <div class="notice-list" :class="{'isCollapse':group.list.length>3}">
+                <div class="notice-list" :class="{'isCollapse':group.list.length > 3}">
                     <div class="notice--module" v-for="(item,j) in group.list" :key="j">
                         <div class="notice" :ref="'notice-'+i+'-'+j">
                             <m-dialog :status="item.status || 'info'" :titleIcon="item.icon"
@@ -20,7 +20,10 @@
                                 :isCloseOptions="item.isCloseOptions || false"
                                 :confirm="item.confirm || {title: confirm.title , handleFunct: confirmHandler}"
                                 :cancel="item.cancel || {title: cancel.title , handleFunct: cancelHandler}"
-                                :close="item.close || {title: close.title , handleFunct: closeHandler}" isCloseIcon>
+                                :close="item.close || {title: close.title , handleFunct: closeHandler}" 
+                                :closeHandler="titleCloseNotice"
+                                isCloseIcon
+                            >
                             </m-dialog>
                         </div>
                     </div>
@@ -59,30 +62,32 @@
         created() { },
         mounted() { },
         methods: {
-            confirmHandler(i, j) {
-                console.log(this)
-                this.$el.style.display = 'none';
-                // alert('确认');
-                // this.closeNotice(i,j);
+            confirmHandler(e) {
+                alert('确认');
+                this.closeNotice(e);
             },
-            cancelHandler(i, j) {
-                console.log(this)
-                this.$el.style.display = 'none';
-                // alert('取消');
-                // this.closeNotice(i,j);
+            cancelHandler(e) {
+                alert('取消');
+                this.closeNotice(e);
             },
-            closeHandler(i, j) {
-                console.log(this)
-                this.$el.style.display = 'none';
-                // alert('关闭');
-                // this.closeNotice(i,j);
+            closeHandler(e) {
+                alert('关闭');
+                this.closeNotice(e);
             },
 
-            closeNotice(i, j) {
-                // let dialog = e.target.parentNode.parentNode.parentNode.parentNode;
-                // let notice = dislog.parentNode.parentNode;
-                let notice = this.$refs['notice-' + i + '-' + j];
+            closeNotice(e) {
+                let dialog = e.target.parentNode.parentNode.parentNode.parentNode;
+                let notice = dislog.parentNode.parentNode;
+                console.log(notice)
+                // let notice = this.$refs['notice-' + i + '-' + j];
                 notice.style.display = 'none';
+            },
+            titleCloseNotice(dialog){
+                console.log(dialog)
+                // let dialog = e.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+                let notice = dialog.parentNode.parentNode.parentNode;
+                // notice.style.display = 'none';
+                this.$el.removeChild(notice)
             }
         },
     }

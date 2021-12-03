@@ -14,7 +14,7 @@
                             <div class="title">{{title}}</div>
                             <div class="context">{{context}}</div>
                         </div>
-                        <div class="close-icon" v-if="isCloseIcon" @click="close.handleFunct">
+                        <div class="close-icon" v-if="isCloseIcon" @click="titleCloseDialog">
                             <i class="fa fa-times"></i>
                         </div>
                     </div>
@@ -83,6 +83,9 @@
                     }
                 }
             },
+            closeHandler: {
+                type: Function
+            }
         },
         data() {
             return {}
@@ -119,8 +122,12 @@
         mounted() { },
         methods: {
             closeDialog(e) {
-                let dialog = e.target.parentNode.parentNode.parentNode.parentNode;
+                this.$el.style.display = 'none';
+            },
+            titleCloseDialog(e){
+                let dialog = this.$el;
                 dialog.style.display = 'none';
+                if(this.closeHandler) this.closeHandler(dialog);
             }
         },
     }
