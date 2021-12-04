@@ -22,25 +22,34 @@
             <m-button status="info">自定义图标</m-button>
         </card>
         <div class="notice-contain">
-            <notice :groups="groups"></notice>
+            <notice-list :groups="groups"></notice-list>
         </div>
     </div>
 </template>
 <script>
     import card from '../../components/card.vue';
     import mButton from '../../components/m-button.vue';
-    import notice from '../../components/notice.vue';
+    import noticeList from '../../components/notice-list.vue';
     export default{
         data(){
             return{
                 groups:[
                     {
                         title: '',
-                        list: [{},{},{},{},]
+                        list: [
+                            {},
+                            {},
+                            {},
+                            {},
+                        ]
                     },
                     {
                         title: '',
-                        list: [{},{},{},]
+                        list: [
+                            {},
+                            {},
+                            {},
+                        ]
                     }
                 ]
             }
@@ -48,7 +57,7 @@
         components:{
             card,
             mButton,
-            notice,
+            noticeList,
         },
         watch:{},
         computed:{},

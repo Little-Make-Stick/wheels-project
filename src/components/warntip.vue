@@ -59,8 +59,7 @@
         mounted(){},
         methods:{
             closeEvent(e){
-                let warntip = e.target.parentNode.parentNode.parentNode;
-                warntip.style.display='none';
+                this.$el.style.display='none';
             }
         },
     }

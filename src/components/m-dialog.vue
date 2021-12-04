@@ -125,9 +125,8 @@
                 this.$el.style.display = 'none';
             },
             titleCloseDialog(e){
-                let dialog = this.$el;
-                dialog.style.display = 'none';
-                if(this.closeHandler) this.closeHandler(dialog);
+                this.$el.style.display = 'none';
+                if(this.closeHandler) this.closeHandler();
             }
         },
     }

@@ -63,8 +63,7 @@
                 if(this.closeEvent){
                     this.closeEvent();
                 }else{
-                    let labelNode = e.target.parentNode.parentNode;
-                    labelNode.style.display="none";
+                    this.$el.style.display="none";
                 }
             }
         },

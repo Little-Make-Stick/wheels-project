@@ -65,10 +65,7 @@
         mounted() { },
         methods: {
             closeDialog(e){
-                let dialog = e.target.parentNode.parentNode.parentNode.parentNode;
-                let dialogComp = dialog.parentNode.parentNode.parentNode;
-                let bubbleDialog = dialogComp.parentNode.parentNode.parentNode;
-                bubbleDialog.style.display="none";
+                this.$el.style.display="none";
             }
         },
     };
