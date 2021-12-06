@@ -1,7 +1,7 @@
 <template>
     <div class='notice-list-component'>
         <div class="notice-list-content">
-            <div class="notice-group" v-for="(group,i) in noticeGroups" :key="i">
+            <div class="notice-group" v-for="group in noticeGroups" :key="group.id">
                 <div class="group-title" v-if="group.list.length > 3">
                     <div class="title-context">{{group.title || '通知中心'}}</div>
                     <div class="close-btn">
@@ -12,8 +12,9 @@
                     </div>
                 </div>
                 <div class="notice-list" :class="{'isCollapse':group.list.length > 3}">
-                    <notice :notice="item" v-for="(item,j) in group.list" :key="j"
-                        @close="removeListItem(i,j)">
+                    <notice :notice="item" :i="group.id" :j="item.id"
+                        v-for="item in group.list" :key="item.id"
+                        @close="removeListItem">
                     </notice>
                 </div>
             </div>
@@ -40,7 +41,8 @@
         mounted() { },
         methods: {
             removeListItem(groupIndex,listIndex){
-                this.noticeGroups[groupIndex].list.splice(listIndex,1)
+                this.noticeGroups[groupIndex-1].list.splice(listIndex-1,1);
+                console.log(this.noticeGroups)
             }
         },
     }

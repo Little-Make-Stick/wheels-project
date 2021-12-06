@@ -2,10 +2,16 @@
     <div class='notice-component'>
         <div class="notice-content">
             <div class="notice">
-                <m-dialog :status="notice.status || 'info'" :titleIcon="notice.icon" :title="notice.title || 'title'"
-                    :context="notice.context || 'context'" :isConfirmOptions="notice.isConfirmOptions || false"
-                    :isCloseOptions="notice.isCloseOptions || false" :confirm="notice.confirm || confirm"
-                    :cancel="notice.cancel || cancel" :close="notice.close || close" :closeHandler="closeNotice"
+                <m-dialog :status="notice.status || 'info'" 
+                    :titleIcon="notice.icon" 
+                    :title="notice.title || 'title'"
+                    :context="notice.context || 'context'" 
+                    :isConfirmOptions="notice.isConfirmOptions || false"
+                    :isCloseOptions="notice.isCloseOptions || false" 
+                    :confirm="notice.confirm || confirm"
+                    :cancel="notice.cancel || cancel" 
+                    :close="notice.close || close" 
+                    :closeHandler="closeNotice"
                     isCloseIcon>
                 </m-dialog>
             </div>
@@ -17,6 +23,8 @@
     export default {
         props: {
             notice: { type: Object },
+            i: { type: Number },
+            j: { type: Number },
         },
         data() {
             return {
@@ -57,7 +65,7 @@
 
             closeNotice(e) {
                 // this.$el.style.display = "none";
-                this.$emit('close')
+                this.$emit('close',this.i,this.j)
             },
         },
     }

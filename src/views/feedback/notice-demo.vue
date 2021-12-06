@@ -35,20 +35,50 @@
             return{
                 groups:[
                     {
-                        title: '',
+                        id: 1,
+                        title: 'group1',
                         list: [
-                            {},
-                            {},
-                            {},
-                            {},
+                            {
+                                id: 1,
+                                title: 'title1',
+                                context: 'context1',
+                            },
+                            {
+                                id: 2,
+                                title: 'title2',
+                                context: 'context2',
+                            },
+                            {
+                                id: 3,
+                                title: 'title3',
+                                context: 'context3',
+                            },
+                            {
+                                id: 4,
+                                title: 'title4',
+                                context: 'context4',
+                            },
                         ]
                     },
                     {
-                        title: '',
+                        id: 2,
+                        title: 'group2',
                         list: [
-                            {},
-                            {},
-                            {},
+                            {
+                                id: 1,
+                                title: 'title1',
+                                context: 'context1',
+                            },
+                            {
+                                id: 2,
+                                title: 'title2',
+                                context: 'context2',
+                            },
+                            {
+                                id: 3,
+                                title: 'title3',
+                                context: 'context3',
+                            },
                         ]
                     }
                 ]
